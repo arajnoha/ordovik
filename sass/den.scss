@@ -1,0 +1,158 @@
+.den {
+    height: 100%;
+    flex-basis: calc(100% / 7);
+    border-right: 1px solid #ddd;
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+
+    &-header {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h4 {
+            padding: 4px 0 8px
+        }
+
+        span {
+            margin-bottom: 5px;
+        }
+    }
+
+    &-content {
+        overflow: auto;
+    }
+
+    %task {
+        height: 40px;
+        width: 100%;
+        margin: 0;
+        padding: 6px 8px;
+        font-size: 14px;
+        line-height: 28px;
+        outline: 0;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        color: #000;
+    }
+
+    input {
+        @extend %task;
+        opacity: 0;
+        background: #fff;
+        font: inherit;
+
+        &::placeholder {
+            color: #000;
+        }
+
+        &[name="id"],
+        &[name="submit"] {
+            display: none;
+
+        }
+    }
+
+    &.today {
+
+        .den-header {
+            background: #f9a770;
+            border-bottom-color: #fff;
+        }
+    }
+
+    &:hover {
+
+        input {
+            opacity: 1;
+        }
+    }
+}
+
+
+.task,
+.faux-task {
+    @extend %task; 
+
+    // specific overrides
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    span {
+        width: 100%;
+    }
+
+    .buttons {
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: 0;
+        z-index: 2;
+        display: none;
+    }
+
+    button {
+        height: 40px;
+        width: 40px;
+        border: 0;
+        border-left: 1px solid #ccc;
+        cursor: pointer;
+
+        &.delete {
+            background: no-repeat center/70% url("assets/delete.svg") #eee;
+        }
+        &.rename {
+            background: no-repeat center/70% url("assets/rename.svg") #eee;
+        }
+        &.repeat {
+            background: no-repeat center/60% url("assets/repeat.svg") #eee;
+        }
+    }
+
+    &[data-state="1"] {
+        color: #666;
+        font-style: italic;
+        opacity: 0.7;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 9px;
+            right: 9px;
+            height: 1px;
+            top: 50%;
+            background: #999;
+        }
+    }
+
+    &:not([data-repetition="none"])::before {
+        content: "";
+        display: block;
+        width: 18px;
+        height: 14px;
+        background: no-repeat center/60% url("assets/repeat.svg") $color-a-light;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    body.red & {
+        opacity: 1;
+
+        .buttons {
+            display: block;
+        }
+    }
+}

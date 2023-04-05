@@ -1,0 +1,16 @@
+{
+  "name": "Kalo",
+  "version": "1.0.0",
+  "description": "Personal todo list in a weekly calendar",
+  "scripts": {
+    "scss": "gulp sass"
+  },
+  "author": "Adam Rajnoha",
+  "license": "GPL",
+  "dependencies": {
+    "gulp-sass": "^5.1.0"
+  },
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}

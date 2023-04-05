@@ -1,0 +1,370 @@
+@font-face {
+  font-family: "lb";
+  font-weight: 400;
+  src: url(assets/lb.woff2);
+}
+@font-face {
+  font-family: "lbb";
+  font-weight: 700;
+  src: url(assets/lbb.woff2);
+}
+html, body {
+  height: 100%;
+}
+
+html, body, section, div, a, form, input, h1, h2, h3, h4, h5, h6, button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  appearance: none;
+}
+
+body {
+  font: 400 14px/20px "lb", serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+h4 {
+  font: 700 18px/24px "lbb", serif;
+}
+
+.tyden {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 300px;
+  background-color: #f9a770;
+  border-radius: 5px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form h4 {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+.login-form input {
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  outline: 0;
+  border: 1px solid #000;
+  background: #fff;
+  padding: 6px;
+  margin: 0 0 25px;
+}
+.login-form input[type=submit] {
+  width: 100px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  font: 14px/18px "lb", serif;
+  cursor: pointer;
+}
+
+.ctrl-toggle-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: none;
+  width: auto;
+  height: 40px;
+  padding: 12px;
+  background: #fff;
+  color: #000;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 2px 4px 1px 4px rgba(0, 0, 0, 0.18);
+}
+.ctrl-toggle-button.pressed {
+  font-size: 95%;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 3px 0px 4px rgba(0, 0, 0, 0.28);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 70px;
+  flex-shrink: 0;
+  padding: 0 16px;
+}
+
+.navigation {
+  display: flex;
+  margin-left: auto;
+}
+.navigation a {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 7px;
+  cursor: pointer;
+}
+.navigation .round-button,
+.navigation .text-link {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f9a770;
+  color: #000;
+  font: inherit;
+  text-align: center;
+}
+.navigation .round-button svg,
+.navigation .text-link svg {
+  height: 100%;
+  width: 100%;
+}
+.navigation .small-hack svg {
+  width: 68%;
+  height: 68%;
+  padding: 5px;
+}
+.navigation .ghost {
+  background: #fff;
+  padding: 5px;
+  border: 1px solid #666;
+}
+.navigation .text-link {
+  padding: 6px 12px;
+  border-radius: 5px;
+  width: auto;
+}
+
+.den {
+  height: 100%;
+  flex-basis: 14.2857142857%;
+  border-right: 1px solid #ddd;
+  overflow: hidden;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.den-header {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.den-header h4 {
+  padding: 4px 0 8px;
+}
+.den-header span {
+  margin-bottom: 5px;
+}
+.den-content {
+  overflow: auto;
+}
+.den .task,
+.den .faux-task, .den input {
+  height: 40px;
+  width: 100%;
+  margin: 0;
+  padding: 6px 8px;
+  font-size: 14px;
+  line-height: 28px;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+.den input {
+  opacity: 0;
+  background: #fff;
+  font: inherit;
+}
+.den input::placeholder {
+  color: #000;
+}
+.den input[name=id], .den input[name=submit] {
+  display: none;
+}
+.den.today .den-header {
+  background: #f9a770;
+  border-bottom-color: #fff;
+}
+.den:hover input {
+  opacity: 1;
+}
+
+.task,
+.faux-task {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.task span,
+.faux-task span {
+  width: 100%;
+}
+.task .buttons,
+.faux-task .buttons {
+  position: absolute;
+  top: 0;
+  left: auto;
+  right: 0;
+  z-index: 2;
+  display: none;
+}
+.task button,
+.faux-task button {
+  height: 40px;
+  width: 40px;
+  border: 0;
+  border-left: 1px solid #ccc;
+  cursor: pointer;
+}
+.task button.delete,
+.faux-task button.delete {
+  background: no-repeat center/70% url("assets/delete.svg") #eee;
+}
+.task button.rename,
+.faux-task button.rename {
+  background: no-repeat center/70% url("assets/rename.svg") #eee;
+}
+.task button.repeat,
+.faux-task button.repeat {
+  background: no-repeat center/60% url("assets/repeat.svg") #eee;
+}
+.task[data-state="1"],
+.faux-task[data-state="1"] {
+  color: #666;
+  font-style: italic;
+  opacity: 0.7;
+}
+.task[data-state="1"]::after,
+.faux-task[data-state="1"]::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  height: 1px;
+  top: 50%;
+  background: #999;
+}
+.task:not([data-repetition=none])::before,
+.faux-task:not([data-repetition=none])::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 14px;
+  background: no-repeat center/60% url("assets/repeat.svg") #fbc5a1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body.red .task,
+body.red .faux-task {
+  opacity: 1;
+}
+body.red .task .buttons,
+body.red .faux-task .buttons {
+  display: block;
+}
+
+@media screen and (max-width: 500px) {
+  .tyden {
+    flex-direction: column;
+    overflow: auto;
+  }
+  .den {
+    overflow: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 20px 0;
+    height: auto;
+    flex-basis: auto;
+    box-shadow: 2px 0 7px 4px rgba(0, 0, 0, 0.18);
+  }
+  .den-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .den input {
+    opacity: 1;
+  }
+  .navigation a {
+    margin: 0 5px;
+  }
+  .ctrl-toggle-button {
+    display: inline-block;
+  }
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 10000px rgba(0, 0, 0, 0.24);
+  padding: 14px 20px;
+}
+.modal.hide {
+  display: none;
+}
+.modal h4 {
+  margin: 0 0 15px;
+}
+.modal #modal-repeat-name {
+  padding: 10px 0;
+  display: inline-block;
+}
+.modal #repeat-form {
+  border-top: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.modal #repeat-form label {
+  margin: 5px 0;
+}
+.modal #repeat-form input {
+  margin-right: 6px;
+}
+.modal #repeat-form input:checked + span {
+  font-weight: 700;
+}
+.modal .navigation {
+  margin: 15px 0 0;
+  justify-content: space-between;
+}
+.modal .navigation button {
+  cursor: pointer;
+}

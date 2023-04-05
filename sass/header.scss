@@ -1,0 +1,54 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 70px;
+    flex-shrink: 0;
+    padding: 0 16px;
+}
+.navigation {
+    display: flex;
+    margin-left: auto;
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        margin: 0 7px;
+        cursor: pointer;
+    }
+
+    .round-button,
+    .text-link {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: $color-a;
+        color: #000;
+        font: inherit;
+        text-align: center;
+
+        svg {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .small-hack svg {
+        width: 68%;
+        height: 68%;
+        padding: 5px;
+    }
+
+    .ghost {
+        background: #fff;
+        padding: 5px;
+        border: 1px solid #666;
+    }
+
+    .text-link {
+        padding: 6px 12px;
+        border-radius: 5px;
+        width: auto;
+    }
+}
