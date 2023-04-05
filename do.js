@@ -124,14 +124,15 @@ document.addEventListener("click", function(e){
             }
             
         }
-        if (e.target.classList.contains("repeat")) {
-            let repetition = task.getAttribute("data-repetition");
-            modalRepeat.setAttribute("data-taskid", task.getAttribute("data-taskid"));
-            modalRepeat.setAttribute("data-id", task.getAttribute("data-day"));
-            modalRepeat.classList.remove("hide");
-            modalRepeatName.textContent = "Úkol: "+name;
-            modalRepeat.querySelector("input#"+repetition).checked = "checked";
-        }
+        // OPAKOVÁNÍ 
+        // if (e.target.classList.contains("repeat")) {
+        //     let repetition = task.getAttribute("data-repetition");
+        //     modalRepeat.setAttribute("data-taskid", task.getAttribute("data-taskid"));
+        //     modalRepeat.setAttribute("data-id", task.getAttribute("data-day"));
+        //     modalRepeat.classList.remove("hide");
+        //     modalRepeatName.textContent = "Úkol: "+name;
+        //     modalRepeat.querySelector("input#"+repetition).checked = "checked";
+        // }
     }
 
     if (e.target.id == "repeat-form-close") {

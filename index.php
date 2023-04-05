@@ -142,7 +142,7 @@ do {
             $tasks = $data[$key]["tasks"];
 
             foreach ($tasks as $task) {
-                echo "<div class='task' data-taskid='".$task["taskid"]."' data-color='".$task["color"]."' data-state='".$task["done"]."' data-day='".$id."' data-repetition='".$task["repetition"]."'><span>".$task["name"]."</span><div class='buttons'><button class='delete'></button><button class='rename'></button><button class='repeat'></button></div></div>";
+                echo "<div class='task' data-taskid='".$task["taskid"]."' data-color='".$task["color"]."' data-state='".$task["done"]."' data-day='".$id."' data-repetition='".$task["repetition"]."'><span>".$task["name"]."</span><div class='buttons'><button class='delete'></button><button class='rename'></button></div></div>";
             }
         }
     }
